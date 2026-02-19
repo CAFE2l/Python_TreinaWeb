@@ -93,7 +93,37 @@ for i in range(tamanho):
     numeros[indice_menor] = numeros[i]
     numeros[i] = temp
     print(f"vetor: {numeros}")
+# FIM SELECTION SORT 
+# BUSCA BINARIA
+# 2
+# 1 / 2 / 4 / 5 / 6 
+# 1 / 2
+# 2
+
+resultado = -1
+inicio = 0
+fim = tamanho - 1
+meio = 0
+alvo = int(input(f"{cores['cinza']}{estilos['negrito']}Digite o elemento a ser encontrado: "))
+
+while inicio <= fim:
+    meio = int((inicio + fim) / 2)
+    if (numeros[meio] < alvo):
+        inicio = meio + 1
+    elif (numeros[meio] > alvo):
+        fim = meio - 1
+    else: 
+        resultado = meio
+        break
+if resultado < 0:
+    print(f"{cores['vermelho']}{estilos['italico']}Elemento não encontrado :({cores['limpa']}")
+else: 
+    print(f"{cores['cinza']}{estilos['negrito']}O elemento {estilos['italico']}{cores['verde']}{alvo}{cores['limpa']}{estilos['negrito']}{cores['cinza']} esta na posição {cores['amarelo']}{estilos['italico']}{resultado}{cores['limpa']}")
+
+
+#FIM BUSCA BINARIA
 
 
 
-# FIM SELECTION SORT
+
+
