@@ -55,6 +55,9 @@ print(f"{estilos['negrito']}{cores['vermelho']}{"==="*11+"=="}{cores['limpa']}")
 
 # 0 / 1 / 2 / 3 / 4 
 # 5 / 2 / 4 / 6 / 1
+
+
+
 numeros = list()
 tamanho = int(input(f"{estilos['negrito']}{cores['cinza']}Digite o tamanho do vetor: "))
 for i in range(tamanho):
@@ -65,6 +68,12 @@ print(f"{cores['cinza']}Vetor: {cores['azul']}{numeros}")
 print(f"{cores['cinza']}Valor da {cores['verde']}Primeira{cores['cinza']} posição: {numeros[0]}")
 
 # BUSCA LINEAR
+# Melhor caso: 1 vez O(1)
+# Pior caso: N vezes O(n)
+# Caso médio: (N / 2) vezes
+
+
+
 numero_pesquisar = int(input(f"{cores['cinza']}{estilos['negrito']}Digite o valor a ser pesquisado no vetor: "))
 posicao_resultado = -1
 for i in range(tamanho):
@@ -83,6 +92,10 @@ else:
 # 5 / 2 / 4 / 6 / 1
 # 1 / 2 / 4 / 6 / 5
 # 1 / 2 / 4 / 5 / 6
+
+# Melhor caso: N * N = N^2 O(n^2)
+# Pior caso: N * N = N^2 O(n^2)
+# Caso médio: N * N = N^2
 
 for i in range(tamanho):
     indice_menor = i
@@ -122,8 +135,3 @@ else:
 
 
 #FIM BUSCA BINARIA
-
-
-
-
-
