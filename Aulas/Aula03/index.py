@@ -1,6 +1,6 @@
 import MySQLdb
 
-conn = MySQLdb.connect(
+db = MySQLdb.connect(
     user="cafe",
     passwd="SenhaForte123!",
     db="treinaweb_clientes",
@@ -8,4 +8,5 @@ conn = MySQLdb.connect(
     port=3306
 )
 
-print("Conexão realizada com sucesso")
+db.close()
+
