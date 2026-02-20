@@ -1,65 +1,47 @@
-import MySQLdb, cliente
+import MySQLdb, fabrica_conexao
 
 class ClienteRepositorio():
     @staticmethod
     def listar_clientes():
-        db = MySQLdb.connect(
-            user="cafe",
-            passwd="SenhaForte123!",
-            db="treinaweb_clientes",
-            host="localhost",
-            port=3306,
-            autocommit=True
-        )
-        cursor = db.cursor()
-        cursor.execute("SELECT * FROM clientes")
-        print(cursor.fetchall())
-        db.close()
+        fabrica = fabrica_conexao.FabricaConexao.conectar()
+        try:
+            cursor = fabrica.cursor()
+            cursor.execute("SELECT * FROM clientes")
+            print(cursor.fetchall())
+        finally:
+            fabrica.close()
+
     @staticmethod
     def inserir_cliente(cliente):
-        db = MySQLdb.connect(
-            user="cafe",
-            passwd="SenhaForte123!",
-            db="treinaweb_clientes",
-            host="localhost",
-            port=3306,
-            autocommit=True
-        )
-        cursor = db.cursor()
-        cursor.execute(
-            "INSERT INTO clientes (nome, idade) VALUES (%s, %s)",
-            (cliente.nome, cliente.idade)
-        )
-        db.close()
+        fabrica = fabrica_conexao.FabricaConexao.conectar()
+        try:
+            cursor = fabrica.cursor()
+            cursor.execute(
+                "INSERT INTO clientes (nome, idade) VALUES (%s, %s)",
+                (cliente.nome, cliente.idade)
+            )
+        finally:
+            fabrica.close()
+
     @staticmethod
     def editar_cliente(id_cliente, cliente):
-        db = MySQLdb.connect(
-            user="cafe",
-            passwd="SenhaForte123!",
-            db="treinaweb_clientes",
-            host="localhost",
-            port=3306,
-            autocommit=True
-        )
-        cursor = db.cursor()
-        cursor.execute(
-            "UPDATE clientes SET nome=%(nome)s, idade=%(idade)s WHERE idcliente=%(id_cliente)s",
-            {'nome': cliente.nome, 'idade': cliente.idade, 'id_cliente': id_cliente}
-        )
-        db.close()
+        fabrica = fabrica_conexao.FabricaConexao.conectar()
+        try:
+            cursor = fabrica.cursor()
+            cursor.execute(
+                "UPDATE clientes SET nome=%(nome)s, idade=%(idade)s WHERE idcliente=%(id_cliente)s",
+                {'nome': cliente.nome, 'idade': cliente.idade, 'id_cliente': id_cliente}
+            )
+        finally:
+            fabrica.close()
 
 
     @staticmethod
     def remover_cliente(id_cliente):
-        db = MySQLdb.connect(
-            user="cafe",
-            passwd="SenhaForte123!",
-            db="treinaweb_clientes",
-            host="localhost",
-            port=3306,
-            autocommit=True
-        )
-        cursor = db.cursor()
-        cursor.execute("DELETE FROM clientes WHERE idcliente=%s", (id_cliente,))
-        db.close()
-
+        fabrica = fabrica_conexao.FabricaConexao.conectar()
+        try:
+           cursor = fabrica.cursor()
+           cursor.execute("DELETE FROM clientes WHERE idcliente=%s", (id_cliente,))
+        
+        finally:
+            fabrica.close()
