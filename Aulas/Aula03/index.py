@@ -7,6 +7,12 @@ db = MySQLdb.connect(
     host="localhost",
     port=3306
 )
-
+cursor = db.cursor()
+cursor.execute("SELECT * FROM clientes")
+print(cursor.fetchall())
+print("conexao realizda com sucesso")
+cursor.execute("INSERT INTO clientes (nome, idade) VALUES ('luis gustavo', 16)")
+cursor.execute("SELECT * FROM clientes")
+print(cursor.fetchall())
 db.close()
 
