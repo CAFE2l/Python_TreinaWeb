@@ -20,5 +20,4 @@ nome = "carlos"
 cursor.execute(f"UPDATE clientes SET nome='{nome}', idade=80  WHERE idcliente=1")
 cursor.execute("SELECT * FROM clientes")
 print(cursor.fetchall())
-
 db.close()
