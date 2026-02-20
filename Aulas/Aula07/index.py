@@ -1,7 +1,7 @@
 import MySQLdb, cliente, cliente_repositorio, fabrica_conexao
 
 
-cliente = cliente.Cliente("FINALMENTEEEEEE", 777)
+cliente = cliente.Cliente("vou cancelar no twitter", 0000)
 
 cliente_repositorio.ClienteRepositorio.listar_clientes()
 cliente_repositorio.ClienteRepositorio.inserir_cliente(cliente)

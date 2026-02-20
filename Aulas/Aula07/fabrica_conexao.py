@@ -1,14 +1,18 @@
-import MySQLdb
+
+import MySQLdb, configparser
 
 class FabricaConexao():
     @staticmethod
     def conectar():
+        config = configparser.ConfigParser()
+        config.read('Aulas/Aula07/config.ini')  # caminho ajustado
+
         db = MySQLdb.connect(
-            user="cafe",
-            passwd="SenhaForte123!",
-            db="treinaweb_clientes",
-            host="localhost",
-            port=3306,
-            autocommit=True
+            user=config['DATABASE']['user'],
+            passwd=config['DATABASE']['passwd'],
+            db=config['DATABASE']['db'],   # corrigido
+            host=config['DATABASE']['host'],
+            port=int(config['DATABASE']['port']),
+            autocommit=config['DATABASE'].getboolean('autocommit')
         )
         return db
